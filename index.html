@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Moonveil — разработка современных сайтов, веб-приложений и Telegram-ботов для бизнеса, продуктов и идей.">
+  <meta name="theme-color" content="#06050a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moonveil — премиум веб-решения: сайты, веб-приложения и боты">
+  <meta property="og:description" content="Moonveil — разработка современных сайтов, веб-приложений и Telegram-ботов для бизнеса, продуктов и идей.">
+  <title>Moonveil — премиум веб-решения: сайты, веб-приложения и боты</title>
+
+  <!-- Класс .js включает анимации появления. Если main.js не загрузился,
+       класс снимается, и контент остаётся видимым -->
+  <script>
+    document.documentElement.classList.add("js");
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (!window.MOONVEIL_READY) document.documentElement.classList.remove("js");
+      }, 1200);
+    });
+  </script>
+
+  <!-- Шрифты подключены в style.css (@font-face); здесь только ускорение загрузки -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/unbounded-cyrillic-wght-normal.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/onest-cyrillic-wght-normal.woff2">
+  <link rel="preload" as="image" href="images/hero-statue.jpg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+
+<body>
+  <!-- SVG-спрайт: иконки подключаются через <use href="#i-..."> -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c3a9ff"/><stop offset="1" stop-color="#6a3df0"/></linearGradient>
+    </defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M21.300 3.300 2.700 10.500c-.800.300-.800 1.400 0 1.700l4.600 1.700 1.800 5.500c.200.700 1.100.900 1.600.400l2.600-2.500 4.500 3.300c.600.400 1.400.100 1.500-.600l3.300-15.600c.200-.800-.600-1.400-1.300-1.100Z"/><path stroke="#06050a" stroke-width="1.300" d="M8.800 14.300 17.600 7.800"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.500 2 4.500 13.500h6.500l-1.500 8.500 10-12.500h-6.500L13.500 2Z"/></symbol>
+    <symbol id="i-diamond" viewBox="0 0 24 24"><path d="M6.500 3.500h11L22 9.500 12 21 2 9.500l4.500-6ZM2 9.500h20M8.500 9.500 12 21l3.500-11.500M6.500 3.500l2 6 3.500-6 3.500 6 2-6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><rect x="3" y="13.500" width="4.500" height="7.500" rx="1.200"/><rect x="9.750" y="8.500" width="4.500" height="12.500" rx="1.200"/><rect x="16.500" y="3" width="4.500" height="18" rx="1.200"/></symbol>
+    <symbol id="i-window" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M6.500 6.500h.010M9.500 6.500h.010M7.500 13.500h5M7.500 16.500h9"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11.500" rx="3.500"/><path d="M12 8V5M9 13v1.500M15 13v1.500M2 12.500v3M22 12.500v3"/><circle cx="12" cy="3.700" r="1.300"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 4.500-9 4.500-9-4.500L12 3ZM3 12l9 4.500 9-4.500M3 16.500 12 21l9-4.500"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7.500-5 4.500 5 4.500M16 7.500l5 4.500-5 4.500M13.800 5l-3.600 14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.500 4.500 4.500L19 7.500"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.500 3h3l1.500 4.500-2 1.500a12 12 0 0 0 6 6l1.500-2 4.500 1.500v3a2 2 0 0 1-2 2A16.500 16.500 0 0 1 4.500 5a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.200 7-11.500a7 7 0 1 0-14 0C5 14.800 12 21 12 21Z"/><circle cx="12" cy="9.500" r="2.500"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.500 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.500 6v5.500c0 4.500 3.200 8.300 7.500 9.500 4.300-1.200 7.500-5 7.500-9.500V6L12 3Z"/><path d="m9 12 2.200 2.200L15 10.400"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.500" width="18" height="13" rx="3"/><path d="M3 10h18M7 14.500h4"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4.500c4-2.500 7 2.500 13 0v9c-6 2.500-9-2.500-13 0"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.800 2.600 4 5.600 4 9s-1.200 6.400-4 9c-2.800-2.600-4-5.600-4-9s1.200-6.400 4-9Z"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6.500 8h11v3.500a5.500 5.500 0 0 1-11 0V8ZM12 17v4"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.500 6.500a4 4 0 0 0 5 5L12 19a2.500 2.500 0 0 1-3.500-3.500l7.500-7.500a4 4 0 0 0-1.500-1.500ZM14.500 6.500 17 4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.500c.6 5.200 2.600 7.200 9.500 9.500-6.900 2.300-8.900 4.300-9.500 9.500-.6-5.200-2.600-7.200-9.500-9.500 6.900-2.300 8.900-4.300 9.500-9.500Z"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 2c1 3.500 5 5.500 5 10.500a5 5 0 0 1-10 0c0-1.700.6-2.900 1.400-4 .3 1.600 1 2.500 2 2.800C10 8 10.500 4.700 12 2Z"/></symbol>
+  </svg>
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="Moonveil — на главную">
+        <img src="images/logo-mark.svg" alt="" width="52" height="35">
+        <span>Moonveil</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a class="nav__link is-active" href="index.html" aria-current="page">Главная</a>
+        <a class="nav__link" href="projects.html">Проекты</a>
+        <a class="nav__link" href="about.html">Обо мне</a>
+        <a class="nav__link" href="services.html">Услуги</a>
+        <a class="nav__link" href="contacts.html">Контакты</a>
+        <a class="btn btn--primary nav__cta" href="https://t.me/Lexor_7" target="_blank" rel="noopener">
+          <svg class="ico" aria-hidden="true"><use href="#i-plane"/></svg>
+          Написать в Telegram
+        </a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--ghost btn--sm header__cta" href="https://t.me/Lexor_7" target="_blank" rel="noopener">
+          <svg class="ico ico--plane" aria-hidden="true"><use href="#i-plane"/></svg>
+          Связаться
+          <svg class="ico ico--move" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+
+        <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="top">
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <!-- 3D-графика. Чтобы заменить, положите свою картинку в images/hero-statue.jpg -->
+      <div class="hero__art" aria-hidden="true">
+        <div class="hero__art-move" data-parallax="12">
+          <img src="images/hero-statue.jpg" alt="" width="1042" height="614" fetchpriority="high">
+          <i class="spark" style="left:27%;top:26%;--s:14px;--dl:-1s"></i>
+          <i class="spark" style="left:84%;top:60%;--s:18px;--dl:-2.4s"></i>
+          <i class="spark" style="left:60%;top:11%;--s:11px;--dl:-.6s"></i>
+        </div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="pill reveal">
+          <span class="pill__dot"></span>
+          Разрабатываю. Создаю. Вдохновляю.
+        </div>
+
+        <h1 class="hero__title reveal" style="--d:80ms">
+          <span class="silver">Премиум</span><br>
+          <span class="nowrap">веб<span class="grad">-решения</span></span>
+        </h1>
+
+        <p class="hero__lead reveal" style="--d:160ms">
+           Делаю сайты и&nbsp;Telegram-ботов для&nbsp;местного бизнеса:
+           клиент оставляет заявку&nbsp;— она сразу приходит вам
+           в&nbsp;Telegram. Срок до&nbsp;7&nbsp;дней, цена фиксируется
+           до&nbsp;начала работы.
+        </p>
+
+        <div class="hero__buttons reveal" style="--d:240ms">
+          <button class="btn btn--primary js-open-modal" type="button">
+            Обсудить проект
+            <svg class="ico ico--move" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
+
+          <a class="btn btn--ghost" href="#projects">
+            Узнать больше
+            <svg class="ico ico--drop" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="strip" aria-label="Преимущества">
+      <div class="container strip__inner">
+        <div class="feature reveal">
+          <svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg>
+          <div><b>Быстро</b><span>от 4 до 7 дней</span></div>
+        </div>
+
+        <div class="feature reveal" style="--d:80ms">
+          <svg class="ico" aria-hidden="true"><use href="#i-diamond"/></svg>
+          <div><b>Цена</b><span>от 15 000 ₽ </span></div>
+        </div>
+
+        <div class="feature reveal" style="--d:160ms">
+          <svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>
+          <div><b>Результат</b><span>Работа на результат</span></div>
+        </div>
+
+        <span class="strip__sep" aria-hidden="true"></span>
+
+        <!-- Число проектов подставляет main.js по длине массива PROJECTS -->
+        <div class="trust reveal" style="--d:240ms">
+          <div class="avatars" aria-hidden="true"><span>О</span><span>V</span><span>Х</span><span>S</span></div>
+          <p class="trust__text"><b>В портфолио</b><span data-projects-total>7 готовых проектов</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРОЕКТЫ -->
+    <section class="section section--clip section--showcase" id="projects">
+      <div class="container">
+        <div class="showcase">
+          <div class="showcase__copy">
+            <span class="kicker reveal">Мои проекты</span>
+            <h2 class="title reveal" style="--d:80ms">Реальные<br>концепты <span class="grad">и&nbsp;идеи</span></h2>
+            <p class="reveal" style="--d:160ms">Посмотрите на некоторые из моих концептов.</p>
+            <a class="btn btn--ghost btn--sm reveal" style="--d:240ms" href="projects.html">
+              Все проекты
+              <svg class="ico ico--move" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+
+          <!-- Декоративная 3D-сцена: карточки нарисованы на HTML/CSS -->
+          <div class="scene reveal" style="--d:120ms" aria-hidden="true">
+            <div class="scene__stage" data-tilt>
+              <div class="mock mock--ghost"></div>
+
+              <div class="mock mock--main">
+                <div class="mock__bar">
+                  <span class="mock__logo"><svg class="ico"><use href="#i-bolt"/></svg>StreakUP</span>
+                  <span class="mock__nav"><span>Главная</span><span>Возможности</span><span>Тарифы</span></span>
+                  <span class="mock__pill">Начать →</span>
+                </div>
+
+                <div class="mock__body">
+                  <div class="mock__copy">
+                    <b>Стань <em class="grad">лучше</em> каждый день</b>
+                    <p>Отслеживай привычки, развивайся и достигай целей.</p>
+                    <span class="mock__cta">Попробовать бесплатно →</span>
+                  </div>
+
+                  <div class="phone">
+                    <span class="phone__title">Твой прогресс</span>
+                    <div class="phone__row">
+                      <div class="phone__ring">
+                        <svg viewBox="0 0 100 100">
+                          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="7"/>
+                          <circle cx="50" cy="50" r="42" fill="none" stroke="url(#g-ring)" stroke-width="7" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="58"/>
+                        </svg>
+                        <b>78%</b>
+                      </div>
+                      <span class="phone__flame"><svg class="ico"><use href="#i-flame"/></svg>+12%</span>
+                    </div>
+                    <div class="phone__bars">
+                      <i style="height:38%"></i><i style="height:56%"></i><i style="height:44%"></i><i style="height:72%"></i><i style="height:60%"></i><i style="height:88%"></i><i style="height:100%"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock mock--weather">
+                <div class="weather">
+                  <div class="weather__top">
+                    <svg class="weather__icon" viewBox="0 0 64 52">
+                      <circle cx="41" cy="18" r="12" fill="#ffc34d"/>
+                      <path d="M18 46a11 11 0 0 1-1.500-21.900 15 15 0 0 1 29 2.100A10 10 0 0 1 44 46Z" fill="#f5f2ff"/>
+                    </svg>
+                    <div>
+                      <span class="weather__temp">+18°</span>
+                      <span class="weather__city">Пенза <svg class="ico"><use href="#i-pin"/></svg></span>
+                    </div>
+                  </div>
+                  <span class="weather__note">Преимущественно ясно</span>
+
+                  <svg class="weather__land" viewBox="0 0 320 180" preserveAspectRatio="xMidYMax slice">
+                    <path d="M0 110C40 92 80 100 120 96s80-18 130-4 50 8 70-2v90H0Z" fill="#2a2140" opacity=".8"/>
+                    <g fill="#17122a">
+                      <rect x="196" y="78" width="26" height="42"/>
+                      <path d="M196 78q13-18 26 0Z"/>
+                      <rect x="208" y="52" width="2" height="14"/>
+                      <rect x="226" y="62" width="10" height="58"/>
+                      <path d="m225 62 6-16 6 16Z"/>
+                      <rect x="230.300" y="36" width="1.400" height="10"/>
+                      <rect x="184" y="92" width="12" height="28"/>
+                      <path d="M184 92q6-9 12 0Z"/>
+                    </g>
+                    <path d="M0 126c50-18 110-4 160-10s100-12 160 6v58H0Z" fill="#120e20"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Избранные проекты: карточки рисует main.js из массива PROJECTS -->
+        <div class="pgrid" data-projects="featured" data-limit="3" style="margin-top:clamp(48px,5vw,100px)"></div>
+      </div>
+    </section>
+
+    <!-- СТЕК -->
+    <div class="marquee" aria-label="Технологии: HTML, CSS, JavaScript, Python, aiogram, Telegram Bot API, REST API">
+      <div class="marquee__track" aria-hidden="true">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span><span>aiogram</span><span>Telegram Bot API</span><span>Telegram Web App</span><span>REST API</span><span>Адаптивная вёрстка</span><span>Анимации</span>
+      </div>
+    </div>
+
+    <!-- УСЛУГИ -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="head">
+          <div>
+            <span class="kicker reveal">Услуги</span>
+            <h2 class="title reveal" style="--d:80ms">Решение <span class="grad">под вашу задачу</span></h2>
+          </div>
+          <p class="reveal" style="--d:160ms">Выбираем решение под задачу. Перед началом работ согласуем объём, стоимость и сроки.</p>
+        </div>
+
+        <div class="sgrid">
+          <a class="card card--hover card--accent scard reveal" href="services.html#site">
+            <div class="scard__top">
+              <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-window"/></svg></span>
+              <span class="scard__num">01</span>
+            </div>
+            <h3>Создание сайта</h3>
+            <p>Лендинги, сайты-визитки и коммерческие сайты с адаптивной вёрсткой и интерактивными элементами.</p>
+            <div class="scard__foot">
+              <span class="scard__price">от 15 000 ₽</span>
+              <span class="round"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+
+          <a class="card card--hover scard reveal" style="--d:90ms" href="services.html#bot">
+            <div class="scard__top">
+              <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-bot"/></svg></span>
+              <span class="scard__num">02</span>
+            </div>
+            <h3>Telegram-бот</h3>
+            <p>Боты на Python с API-интеграциями, обработкой сообщений и необходимой логикой.</p>
+            <div class="scard__foot">
+              <span class="scard__price">от 20 000 ₽</span>
+              <span class="round"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+
+          <a class="card card--hover scard reveal" style="--d:180ms" href="services.html#combo">
+            <div class="scard__top">
+              <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg></span>
+              <span class="scard__num">03</span>
+            </div>
+            <h3>Сайт + Telegram-бот</h3>
+            <p>Связка сайта и бота для проектов, где пользователю нужен единый и удобный сценарий взаимодействия.</p>
+            <div class="scard__foot">
+              <span class="scard__price">от 35 000 ₽</span>
+              <span class="round"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section class="section section--flush" id="about">
+      <div class="container">
+        <div class="bento">
+          <article class="card bento__main reveal">
+            <span class="kicker">Обо мне</span>
+            <h2 class="title title--sm">Не просто код. <span class="grad">Решение задачи.</span></h2>
+            <p>Я занимаюсь разработкой сайтов и Telegram-ботов. Основной подход — сначала разобраться в задаче, затем подобрать простое и понятное техническое решение.</p>
+            <a class="btn btn--ghost btn--sm" href="about.html">
+              Подробнее обо мне
+              <svg class="ico ico--move" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </article>
+
+          <article class="card bento__stat stat reveal" style="--d:80ms">
+            <b data-projects-count>7</b>
+            <span>проектов в портфолио</span>
+          </article>
+
+          <article class="card bento__stat stat reveal" style="--d:160ms">
+            <b><small>от</small> 4 <small>дней</small></b>
+            <span>срок разработки сайта</span>
+          </article>
+
+          <article class="card bento__wide reveal" style="--d:120ms">
+            <h3>Технологии</h3>
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>aiogram</li><li>Telegram Bot API</li><li>REST API</li>
+            </ul>
+          </article>
+
+          <article class="card bento__cell reveal">
+            <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></span>
+            <h3>Работа по ТЗ</h3>
+            <p>Фиксируем задачу и состав работ до старта.</p>
+          </article>
+
+          <article class="card bento__cell reveal" style="--d:80ms">
+            <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-code"/></svg></span>
+            <h3>Чистый код</h3>
+            <p>Понятная структура, которую легко поддерживать.</p>
+          </article>
+
+          <article class="card bento__cell reveal" style="--d:160ms">
+            <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg></span>
+            <h3>До релиза</h3>
+            <p>Довожу проекты до готового результата.</p>
+          </article>
+
+          <article class="card bento__cell reveal" style="--d:240ms">
+            <span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg></span>
+            <h3>Прозрачная стоимость</h3>
+            <p>Цена и сроки согласованы заранее.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРОЦЕСС -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="head">
+          <div>
+            <span class="kicker reveal">Процесс</span>
+            <h2 class="title reveal" style="--d:80ms">Как <span class="grad">я работаю</span></h2>
+          </div>
+          <p class="reveal" style="--d:160ms">Без лишних этапов. Сначала определяем задачу, затем последовательно доводим решение до готового результата.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3>Обсуждение</h3>
+            <p>Разбираем задачу, цели, функциональность и пожелания к проекту.</p>
+          </li>
+          <li class="step reveal" style="--d:90ms">
+            <span class="step__num">02</span>
+            <h3>План</h3>
+            <p>Определяем структуру, технологии, сроки и стоимость разработки.</p>
+          </li>
+          <li class="step reveal" style="--d:180ms">
+            <span class="step__num">03</span>
+            <h3>Разработка</h3>
+            <p>Создаю проект и показываю промежуточный результат по мере работы.</p>
+          </li>
+          <li class="step reveal" style="--d:270ms">
+            <span class="step__num">04</span>
+            <h3>Релиз</h3>
+            <p>Проверяем результат, исправляем недочёты и передаём готовый проект.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--flush" id="faq">
+      <div class="container">
+        <div class="split">
+          <div class="split__side">
+            <span class="kicker reveal">FAQ</span>
+            <h2 class="title reveal" style="--d:80ms">Частые <span class="grad">вопросы</span></h2>
+            <p class="reveal" style="--d:160ms">Не нашли ответ? Напишите — расскажу подробнее про сроки, стоимость и формат работы.</p>
+            <a class="btn btn--ghost btn--sm reveal" style="--d:240ms" href="contacts.html">
+              Задать вопрос
+              <svg class="ico ico--move" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+
+          <div class="faq">
+            <details class="faq__item reveal" open>
+              <summary>Сколько стоит разработка? <span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body">Стоимость зависит от объёма задачи. Базовые цены указаны в разделе услуг, точная стоимость определяется после обсуждения.</div>
+            </details>
+            <details class="faq__item reveal" style="--d:70ms">
+              <summary>Сколько занимает разработка? <span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body">Небольшой сайт может быть готов примерно от 4 до 7 дней. Более сложные проекты требуют больше времени.</div>
+            </details>
+            <details class="faq__item reveal" style="--d:140ms">
+              <summary>Можно ли внести изменения после сдачи? <span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body">Да. Объём дополнительных изменений согласуется отдельно.</div>
+            </details>
+            <details class="faq__item reveal" style="--d:210ms">
+              <summary>Можете разместить проект в интернете? <span class="faq__plus" aria-hidden="true"></span></summary>
+              <div class="faq__body">Да. Могу помочь с публикацией сайта или размещением Telegram-бота на подходящем сервере.</div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="cta__decor" aria-hidden="true">
+            <span class="ring ring--thin"></span>
+            <span class="ring"></span>
+            <i class="spark" style="right:9%;top:18%;--s:20px"></i>
+            <i class="spark" style="right:38%;top:72%;--s:14px;--dl:-2s"></i>
+          </div>
+
+          <span class="kicker">Контакты</span>
+          <h2 class="title">Есть задача? <span class="grad">Обсудим.</span></h2>
+          <p>Напишите, что необходимо разработать. Я отвечу и помогу определить следующий шаг.</p>
+
+          <div class="cta__actions">
+            <button class="btn btn--primary js-open-modal" type="button">
+              Обсудить проект
+              <svg class="ico ico--move" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <a class="btn btn--ghost" href="https://t.me/Lexor_7" target="_blank" rel="noopener">
+              <svg class="ico" aria-hidden="true"><use href="#i-plane"/></svg>
+              Написать в Telegram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo" href="index.html" aria-label="Moonveil — на главную">
+            <img src="images/logo-mark.svg" alt="" width="52" height="35">
+            <span>Moonveil</span>
+          </a>
+          <p>Современные сайты, веб-приложения и боты для вашего бизнеса, продукта и идей.</p>
+        </div>
+
+        <nav class="footer__col" aria-label="Разделы сайта">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="about.html">Обо мне</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="services.html#site">Создание сайта</a></li>
+            <li><a href="services.html#bot">Telegram-бот</a></li>
+            <li><a href="services.html#combo">Сайт + Telegram-бот</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="https://t.me/Lexor_7" target="_blank" rel="noopener">Telegram: @Lexor_7</a></li>
+            <li><a href="tel:+79869490004">8 (986) 949-00-04</a></li>
+            <li><a href="contacts.html">Оставить заявку</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Moonveil. Сайты, веб-приложения и Telegram-боты.</p>
+        <a href="#top">Наверх <svg class="ico" aria-hidden="true" style="transform:rotate(-90deg)"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <p class="footer__word" aria-hidden="true">Moonveil</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
