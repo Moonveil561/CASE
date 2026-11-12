@@ -122,7 +122,7 @@ const PROJECTS = [
     ]
   },
 
-  {
+  /*{
     slug: "weather-bot",
     title: "Погодный Telegram-бот",
     description:
@@ -142,7 +142,7 @@ const PROJECTS = [
       "Ответ с текущей погодой в чате",
       "Работает прямо в Telegram"
     ]
-  },
+  },*/
 
   {
     slug: "eravel",
